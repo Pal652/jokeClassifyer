@@ -13,6 +13,8 @@ import json
 import spacy
 import re
 
+print("lol0")
+
 def tokenize(joke:str): # ret list of tokens
     
     # Load the Russian SpaCy model
@@ -23,6 +25,7 @@ def tokenize(joke:str): # ret list of tokens
         """Tokenizes, lemmatizes, and cleans tokens to contain only alphabetic characters."""
         doc = nlp(text)  # Process text with SpaCy
         tokens = []
+        print("lol01")
         for token in doc:
             if token.text and not token.is_stop:
                 tokens.append(token.lemma_)
@@ -53,6 +56,13 @@ def OneHot(tokens):
             vector[-1] += 1
     return vector.reshape((1,-1))
 
+print("lol")
+try:
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+except Exception as e:
+    print("Error loading model:", e)
+
 
 # Streamlit app title
 st.title("Machine Learning Model Deployment")
@@ -68,16 +78,9 @@ if st.button("Predict"):
     joket = tokenize(joke)
     X = OneHot(joket)
     st.write(X.shape)
+    print("lol3")
 
     y_pred = np.argmax(model.predict(X), axis=1)
     st.write(f"Prediction: {dc[str(y_pred[0])]}")
 
-# Load the trained model
-if __name__ == "__main__":
-    print("lol")
-    try:
-        with open('model.pkl', 'rb') as file:
-            model = pickle.load(file)
-    except Exception as e:
-        print("Error loading model:", e)
-
+print("lol2")
