@@ -55,8 +55,12 @@ def OneHot(tokens):
 
 
 # Load the trained model
-with open('model.pkl', 'rb') as file:
-    model = pickle.load(file)
+
+try:
+    with open('model.pkl', 'rb') as file:
+        model = pickle.load(file)
+except Exception as e:
+    print("Error loading model:", e)
 
 # Streamlit app title
 st.title("Machine Learning Model Deployment")
