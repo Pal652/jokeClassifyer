@@ -55,7 +55,7 @@ def OneHot(tokens):
 
 
 # Load the trained model
-
+print("lol")
 try:
     with open('model.pkl', 'rb') as file:
         model = pickle.load(file)
