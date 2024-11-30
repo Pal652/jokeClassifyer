@@ -2,4 +2,4 @@ streamlit
 spacy
 numpy
 tensorflow
-pymorphy2
+pymorphy3
