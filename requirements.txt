@@ -2,3 +2,4 @@ streamlit
 spacy
 numpy
 tensorflow
+pymorphy2
