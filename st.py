@@ -54,15 +54,6 @@ def OneHot(tokens):
     return vector.reshape((1,-1))
 
 
-# Load the trained model
-if __name__ == "__main__":
-    print("lol")
-    try:
-        with open('model.pkl', 'rb') as file:
-            model = pickle.load(file)
-    except Exception as e:
-        print("Error loading model:", e)
-
 # Streamlit app title
 st.title("Machine Learning Model Deployment")
 
@@ -80,4 +71,13 @@ if st.button("Predict"):
 
     y_pred = np.argmax(model.predict(X), axis=1)
     st.write(f"Prediction: {dc[str(y_pred[0])]}")
+
+# Load the trained model
+if __name__ == "__main__":
+    print("lol")
+    try:
+        with open('model.pkl', 'rb') as file:
+            model = pickle.load(file)
+    except Exception as e:
+        print("Error loading model:", e)
 
