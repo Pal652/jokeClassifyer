@@ -16,7 +16,7 @@ import re
 def tokenize(joke:str): # ret list of tokens
     
     # Load the Russian SpaCy model
-    nlp = spacy.load("ru_core_news_sm")
+    nlp = spacy.load("ru_core_news_sm/ru_core_news_sm-3.8.0")
     valid_characters_pattern = re.compile(r'[^\u0400-\u04FFa-zA-Z]+')
 
     def lemmatize_and_tokenize(text):
