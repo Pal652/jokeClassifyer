@@ -13,8 +13,6 @@ import json
 import spacy
 import re
 
-print("lol0")
-
 def tokenize(joke:str): # ret list of tokens
     
     # Load the Russian SpaCy model
@@ -42,9 +40,6 @@ def load_from_json(filepath):
     with open(filepath, 'r') as f:
         return json.load(f)
 
-d = load_from_json("vocdic.json")
-dc = load_from_json("catdic.json")
-
 def OneHot(tokens):
 
     vector = np.zeros(len(d)+1)  # Initialize vector of 0's + len
@@ -56,12 +51,26 @@ def OneHot(tokens):
             vector[-1] += 1
     return vector.reshape((1,-1))
 
-print("lol")
-try:
+@st.cache_resource
+def load_model():
+    print("lol0")
     with open('model.pkl', 'rb') as file:
-        model = pickle.load(file)
-except Exception as e:
-    print("Error loading model:", e)
+        return pickle.load(file)
+
+@st.cache_resource
+def load_vocabularies():
+    d = load_from_json("vocdic.json")
+    dc = load_from_json("catdic.json")
+    return d, dc
+
+@st.cache_resource
+def get_spacy_model():
+    spacy.cli.download('ru_core_news_sm')
+    return spacy.load("ru_core_news_sm")
+
+model = load_model()
+d, dc = load_vocabularies()
+nlp = get_spacy_model()
 
 
 # Streamlit app title
