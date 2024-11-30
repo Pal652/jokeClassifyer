@@ -13,8 +13,6 @@ import json
 import spacy
 import re
 
-spacy.cli.download('ru_core_news_sm')
-
 def tokenize(joke:str): # ret list of tokens
     
     # Load the Russian SpaCy model
