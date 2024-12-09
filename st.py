@@ -41,7 +41,7 @@ def load_from_json(filepath):
 def OneHot(tokens):
 
     vector = np.zeros(len(d)+1)  # Initialize vector of 0's + len
-    st.write(len(d)) #debug
+    #st.write(len(d)) #debug
 
     for token in tokens:
         if token in d:  # Only encode tokens in the vocabulary
@@ -83,7 +83,7 @@ joke = st.text_input("joke")
 if st.button("Predict"):
     joket = tokenize(joke)
     X = OneHot(joket)
-    st.write(X.shape)
+    #st.write(X.shape)
     print("lol3")
 
     y_pred = np.argmax(model.predict(X), axis=1)
