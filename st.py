@@ -13,6 +13,8 @@ import json
 import spacy
 import re
 
+text = "_"
+
 def tokenize(joke:str): # ret list of tokens
     
     valid_characters_pattern = re.compile(r'[^\u0400-\u04FFa-zA-Z]+')
