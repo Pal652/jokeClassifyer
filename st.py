@@ -13,8 +13,6 @@ import json
 import spacy
 import re
 
-text = "_"
-
 def tokenize(joke:str): # ret list of tokens
     
     valid_characters_pattern = re.compile(r'[^\u0400-\u04FFa-zA-Z]+')
@@ -80,16 +78,15 @@ st.write("Enter a joke in Russian:")
 joke = st.text_input("joke")
 
 
-st.write(text)
+
 
 # Prediction button
 if st.button("Predict"):
-    text = "thinking..."
+    st.write("")
     joket = tokenize(joke)
     X = OneHot(joket)
     #st.write(X.shape)
     print("lol3")
-    text = "_"
 
     y_pred = np.argmax(model.predict(X), axis=1)
     st.write(f"Prediction: {dc[str(y_pred[0])]}")
