@@ -77,7 +77,8 @@ st.title("Machine Learning Model Deployment")
 st.write("Enter a joke in Russian:")
 joke = st.text_input("joke")
 
-text = "_"
+
+st.write(text)
 
 # Prediction button
 if st.button("Predict"):
@@ -86,10 +87,11 @@ if st.button("Predict"):
     X = OneHot(joket)
     #st.write(X.shape)
     print("lol3")
+    text = "_"
 
     y_pred = np.argmax(model.predict(X), axis=1)
     st.write(f"Prediction: {dc[str(y_pred[0])]}")
 
-st.write(text)
+
 
 print("lol2")
